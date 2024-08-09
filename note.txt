@@ -1,0 +1,30 @@
+Todo list project
+
+1 ) Let users Create todos
+2 ) Add members to to your org , assign org , assign them tasks
+3 ) See a calendar view of all your tasks
+4 ) Reminders at end of day pending tasks for all
+5 ) Grate organizations
+
+
+command for the setup
+npm create refine-app@latest client | Success! Created client
+
+command for creating a react app
+npx create-react-app client
+cd my-app
+npm start
+
+UI points for app from todoist
+hide nav when window width is below 750px
+
+----------------------
+error code while starting the app
+(node:16596) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.(Use `node --trace-deprecation ...` to show where the warning was created)                                                                                                  (node:16596) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+
+----------------------
+Mongodb
+username - tarunpanchal277
+Password - fM2r8FK6qn52LQOZ
+
+mongodb+srv://todoapp:fM2r8FK6qn52LQOZ@cluster0.je9xx4v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
