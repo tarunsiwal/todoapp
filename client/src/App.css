@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-body {
-  font-weight: lighter;
-}
-
 a {
   color: black;
   font-weight: bold;
@@ -19,7 +15,29 @@ a {
   --button-hover-icon: rgb(255, 167, 59);
 }
 
+.app-container {
+  display: flex;
+}
+
+.headerSpacer {
+  padding-top: 1em;
+}
+
+.object-container-header {
+  font-weight: bold;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+
+}
+
+.object-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .sidenav-main-container {
+  z-index: 3;
   position: relative;
   user-select: auto;
   width: 284px;
@@ -38,6 +56,16 @@ a {
 .sidenav {
   display: flex;
   flex-direction: column;
+}
+
+.collapsed-btn {
+  margin-left: 0.7em !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  position: fixed;
+  top: 0.7em;
+  left: 0;
+  z-index: 2 !important;
 }
 
 .user-profile {
@@ -81,9 +109,30 @@ a {
 /* customized */
 .user-profile {
   .btnIcon {
-    margin-left: 8px;
-    margin-right: 0;
+    top: 2px;
+    position: relative;
   }
+}
+
+.add-task .btn,
+.add-task .btn-icon {
+  color: var(--button-hover-icon);
+}
+
+.menu-container button:focus:active {
+  .btn-icon {
+    color: var(--button-hover-icon);
+  }
+
+  color: var(--button-hover-icon);
+}
+
+.user-sm-btn button:focus:active:nth-child(1) {
+  .btn-icon {
+    color: var(--button-hover-icon);
+  }
+
+  color: var(--button-hover-icon);
 }
 
 /*  */
