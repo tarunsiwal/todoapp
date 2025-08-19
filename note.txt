@@ -21,10 +21,3 @@ hide nav when window width is below 750px
 ----------------------
 error code while starting the app
 (node:16596) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.(Use `node --trace-deprecation ...` to show where the warning was created)                                                                                                  (node:16596) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
-
-----------------------
-Mongodb
-username - tarunpanchal277
-Password - fM2r8FK6qn52LQOZ
-
-mongodb+srv://todoapp:fM2r8FK6qn52LQOZ@cluster0.je9xx4v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
