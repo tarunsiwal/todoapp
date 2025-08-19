@@ -7,13 +7,19 @@
     "start": "nodemon index.js"
   },
   "keywords": [],
-  "author": "taeun panchal",
+  "author": "tarun panchal",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2",
+    "dotenv": "^17.2.1",
+    "express": "^4.21.2",
     "mongoose": "^8.5.1",
-    "nodemon": "^3.1.4"
+    "mysql2": "^3.14.3",
+    "slugify": "^1.6.6",
+    "superagent": "^10.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

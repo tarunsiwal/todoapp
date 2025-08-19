@@ -9,7 +9,7 @@ function ObjectContainer(props) {
           <h1>{props.containerHeading}</h1>
         </div>
       </header>
-      <div className="object-container-body">ObjectContainer</div>
+      <div className="object-container-body">{props.children}</div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import Task from "../models/tasksModel";
+import Task from "../models/tasksModel.js";
 
 export const getAllTasks = async (req, res) => {
   try {
@@ -95,12 +95,13 @@ export const searchTasks = async (req, res) => {
 
 export const updateTask = async (req, res) => {
   const { id } = req.params;
-  const { title, description, dueDate, isCompleted } = req.body;
+  const { title, description, dueDate, isCompleted, labels, priority } =
+    req.body;
 
   try {
     const updatedTask = await Task.findByIdAndUpdate(
       id,
-      { title, description, dueDate, isCompleted },
+      { title, description, dueDate, isCompleted, labels, priority },
       { new: true } // Returns the updated document
     );
 
@@ -109,6 +110,19 @@ export const updateTask = async (req, res) => {
     }
 
     res.status(200).json(updatedTask);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteTask = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedTask = await Task.findByIdAndDelete(id); // Finds the task by its ID
+    if (!deletedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    res.status(200).json({ message: "Task deleted successfully", deletedTask }); // Returns the task in JSON format
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
