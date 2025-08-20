@@ -12,7 +12,7 @@ a {
   --sidebar-width: 284px;
   --background-color: #fcfaf8;
   --button-hover: rgb(254, 238, 218);
-  --button-hover-icon: rgb(255, 167, 59);
+  --button-hover-icon: rgb(255, 193, 7);
 }
 
 .app-container {
@@ -36,37 +36,7 @@ a {
   flex-direction: column;
 }
 
-.sidenav-main-container {
-  z-index: 3;
-  position: relative;
-  user-select: auto;
-  width: 284px;
-  height: auto;
-  max-width: 420px;
-  min-width: 210px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  background-color: var(--background-color);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
-.sidenav {
-  display: flex;
-  flex-direction: column;
-}
-
-.collapsed-btn {
-  margin-left: 0.7em !important;
-  visibility: visible !important;
-  overflow: visible !important;
-  position: fixed;
-  top: 0.7em;
-  left: 0;
-  z-index: 2 !important;
-}
 
 .user-profile {
   margin: 0.7em;
@@ -216,4 +186,38 @@ a {
   color: aliceblue;
   margin-right: 6px;
   position: relative;
+}
+
+/* side nave bar */
+
+.sidenav-main-container {
+  z-index: 2;
+  position: relative;
+  user-select: auto;
+  width: 284px;
+  height: auto;
+  max-width: 420px;
+  min-width: 210px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  background-color: var(--background-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsed-btn {
+  margin-left: 0.7em !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  position: fixed;
+  top: 0.7em;
+  left: 0;
+  z-index: 2 !important;
 }

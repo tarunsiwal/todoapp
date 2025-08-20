@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Sidenavbtn from "./ui/sidenavbtn.js";
+
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 // import ViewSidebarRoundedIcon from "@mui/icons-material/ViewSidebarRounded";
@@ -18,6 +18,8 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 
+import Sidenavbtn from "./ui/sidenavbtn.js";
+
 const Sidenav = (props) => {
   const [checked, setChecked] = useState(true);
 
@@ -25,8 +27,6 @@ const Sidenav = (props) => {
     setChecked((prev) => !prev);
   };
 
-  const date = new Date().getDate();
-  const currentDay = date.toString().padStart(2, "0");
   const profilePic = props.userimg;
   const user = props.user;
   const clickbtn = () => {
@@ -38,7 +38,7 @@ const Sidenav = (props) => {
       top: 4,
       border: `2px solid ${theme.palette.background.paper}`,
       padding: "0 4px",
-      background: "rgb(255, 167, 59)",
+      background: "rgb(255, 193, 7)",
     },
   }));
   return (
@@ -117,7 +117,7 @@ const Sidenav = (props) => {
                   <InboxRoundedIcon />
                 </Sidenavbtn>
                 <Sidenavbtn dothis={clickbtn} title={"Today"}>
-                  <DynamicCalendarIcon day={currentDay} />
+                  <DynamicCalendarIcon />
                 </Sidenavbtn>
                 <Sidenavbtn dothis={clickbtn} title={"Update"}>
                   <CalendarMonthRoundedIcon />
@@ -154,5 +154,85 @@ const Sidenav = (props) => {
     </Box>
   );
 };
+
+// const Sidenav = ({
+//   setActiveView,
+//   setIsModalOpen,
+//   isCollapsed,
+//   toggleCollapse,
+// }) => {
+//   // Use a conditional Tailwind class for the width based on the isCollapsed prop.
+//   const sidenavWidth = isCollapsed ? "w-20" : "w-64";
+
+//   return (
+//     <div
+//       className={`flex flex-col justify-between shadow-lg p-4 bg-white transition-all duration-300 ${sidenavWidth}`}
+//     >
+//       <div>
+//         {/* Toggle button for collapsing/expanding the sidebar */}
+//         <div className="flex items-center justify-between">
+//           <h1
+//             className={`text-2xl font-bold mb-6 text-gray-800 transition-opacity duration-300 ${
+//               isCollapsed ? "opacity-0 absolute" : "opacity-100"
+//             }`}
+//           >
+//             My Tasks
+//           </h1>
+//           <button
+//             onClick={toggleCollapse}
+//             className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-200 mb-6"
+//           >
+//             <span className="text-xl">{isCollapsed ? "➡️" : "⬅️"}</span>
+//           </button>
+//         </div>
+
+//         {/* Main Navigation - content is hidden when collapsed */}
+//         <nav className="space-y-2">
+//           <SidenavButton
+//             onClick={() => setActiveView("inbox")}
+//             label="Inbox"
+//             icon="📦"
+//             isCollapsed={isCollapsed}
+//           />
+//           <SidenavButton
+//             onClick={() => setActiveView("today")}
+//             label="Today"
+//             icon="☀️"
+//             isCollapsed={isCollapsed}
+//           />
+//           <SidenavButton
+//             onClick={() => setActiveView("updates")}
+//             label="Updates"
+//             icon="🔄"
+//             isCollapsed={isCollapsed}
+//           />
+//           <SidenavButton
+//             onClick={() => setActiveView("search")}
+//             label="Search"
+//             icon="🔍"
+//             isCollapsed={isCollapsed}
+//           />
+//         </nav>
+//       </div>
+
+//       {/* 'Add Task' Button */}
+//       <div className="mt-4">
+//         <button
+//           onClick={() => setIsModalOpen(true)}
+//           className="w-full flex items-center justify-center p-3 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors duration-200"
+//         >
+//           <span className="text-xl mr-2">+</span>
+//           <span
+//             className={`transition-opacity duration-300 ${
+//               isCollapsed ? "opacity-0 absolute" : "opacity-100"
+//             }`}
+//           >
+//             Add Task
+//           </span>
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default Sidenav;

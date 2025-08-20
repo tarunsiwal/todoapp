@@ -2,7 +2,10 @@ import React from "react";
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import { Box, Typography } from "@mui/material";
 
-const DynamicCalendarIcon = ({ day }) => {
+const date = new Date().getDate();
+const currentDay = date.toString().padStart(2, "0");
+
+const DynamicCalendarIcon = () => {
   return (
     <Box
       position="relative"
@@ -14,7 +17,7 @@ const DynamicCalendarIcon = ({ day }) => {
       <CalendarTodayRoundedIcon style={{ fontSize: "1.3rem" }} />
       <Box position="absolute" top={"1.7px"}>
         <Typography variant="caption" fontWeight="bold" fontSize={"0.6rem"}>
-          {day}
+          {currentDay}
         </Typography>
       </Box>
     </Box>
