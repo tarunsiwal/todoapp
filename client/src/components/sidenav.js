@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -19,9 +19,12 @@ import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 
 import Sidenavbtn from "./ui/sidenavbtn.js";
+import PoupContainer from "./ui/poupContainer.js";
+import "../assets/css/popup.css";
 
 const Sidenav = (props) => {
   const [checked, setChecked] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleChange = () => {
     setChecked((prev) => !prev);
@@ -32,6 +35,35 @@ const Sidenav = (props) => {
   const clickbtn = () => {
     return alert("button click");
   };
+
+  const handleAddTaskClick = () => {
+    setIsPopupOpen(true);
+  };
+
+  const addTask = async ({ title, description }) => {
+    try {
+      // We are using a POST request to create a new todo on the server
+      const response = await fetch("http://localhost:5000/api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: title, // Map the title from the form to the 'text' field on the backend
+          description: description, // Also send the description
+        }),
+      });
+      console.log(response);
+
+      if (!response.ok) {
+        throw new Error("Failed to add todo");
+      }
+      setIsPopupOpen(false);
+    } catch (error) {
+      console.error("Failed to add todo:", error);
+    }
+  };
+
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
       right: -1,
@@ -104,7 +136,12 @@ const Sidenav = (props) => {
               </div>
             </div>
             <div className="add-task">
-              <Sidenavbtn dothis={clickbtn} title={"Add a task"}>
+              <Sidenavbtn dothis={handleAddTaskClick} title={"Add a task"}>
+                {/* <PoupContainer
+                  trigger={isPopupOpen}
+                  onClose={() => setIsPopupOpen(false)}
+                  onAddTask={addTask}
+                /> */}
                 <AddCircleRoundedIcon />
               </Sidenavbtn>
             </div>
@@ -151,88 +188,13 @@ const Sidenav = (props) => {
           </div>
         </div>
       </Collapse>
+      <PoupContainer
+        trigger={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        onAddTask={addTask}
+      />
     </Box>
   );
 };
-
-// const Sidenav = ({
-//   setActiveView,
-//   setIsModalOpen,
-//   isCollapsed,
-//   toggleCollapse,
-// }) => {
-//   // Use a conditional Tailwind class for the width based on the isCollapsed prop.
-//   const sidenavWidth = isCollapsed ? "w-20" : "w-64";
-
-//   return (
-//     <div
-//       className={`flex flex-col justify-between shadow-lg p-4 bg-white transition-all duration-300 ${sidenavWidth}`}
-//     >
-//       <div>
-//         {/* Toggle button for collapsing/expanding the sidebar */}
-//         <div className="flex items-center justify-between">
-//           <h1
-//             className={`text-2xl font-bold mb-6 text-gray-800 transition-opacity duration-300 ${
-//               isCollapsed ? "opacity-0 absolute" : "opacity-100"
-//             }`}
-//           >
-//             My Tasks
-//           </h1>
-//           <button
-//             onClick={toggleCollapse}
-//             className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-200 mb-6"
-//           >
-//             <span className="text-xl">{isCollapsed ? "➡️" : "⬅️"}</span>
-//           </button>
-//         </div>
-
-//         {/* Main Navigation - content is hidden when collapsed */}
-//         <nav className="space-y-2">
-//           <SidenavButton
-//             onClick={() => setActiveView("inbox")}
-//             label="Inbox"
-//             icon="📦"
-//             isCollapsed={isCollapsed}
-//           />
-//           <SidenavButton
-//             onClick={() => setActiveView("today")}
-//             label="Today"
-//             icon="☀️"
-//             isCollapsed={isCollapsed}
-//           />
-//           <SidenavButton
-//             onClick={() => setActiveView("updates")}
-//             label="Updates"
-//             icon="🔄"
-//             isCollapsed={isCollapsed}
-//           />
-//           <SidenavButton
-//             onClick={() => setActiveView("search")}
-//             label="Search"
-//             icon="🔍"
-//             isCollapsed={isCollapsed}
-//           />
-//         </nav>
-//       </div>
-
-//       {/* 'Add Task' Button */}
-//       <div className="mt-4">
-//         <button
-//           onClick={() => setIsModalOpen(true)}
-//           className="w-full flex items-center justify-center p-3 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors duration-200"
-//         >
-//           <span className="text-xl mr-2">+</span>
-//           <span
-//             className={`transition-opacity duration-300 ${
-//               isCollapsed ? "opacity-0 absolute" : "opacity-100"
-//             }`}
-//           >
-//             Add Task
-//           </span>
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Sidenav;
