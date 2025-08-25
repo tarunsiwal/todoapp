@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Spinner from "./components/helper/spinner.js";
-import Sidenav from "./components/sidenav";
 import MainObjectContainer from "./components/ui/mainObjectContainer.js";
 
 function App() {
@@ -21,12 +20,6 @@ function App() {
         <Spinner />
       ) : (
         <div className="app-container">
-          <Sidenav user={"tarun"} userimg={""} className="sidenav" />
-          {/* <Sidenav
-            setActiveView={setActiveView}
-            setIsModalOpen={setIsModalOpen}
-            isCollapsed={isSidenavCollapsed}
-          /> */}
           <MainObjectContainer />
         </div>
       )}

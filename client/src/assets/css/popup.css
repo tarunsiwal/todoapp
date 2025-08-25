@@ -103,39 +103,25 @@
     /* Allows user to manually resize vertically */
 }
 
+.text-area {
+    width: 100%;
+}
+
 .popup-btn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+}
+
+.popup-btn .task-dueDate-Priority {
+    display: flex;
+    align-items: center;
+    color: var(--root);
+}
+
+.popup-btn .submit-btn {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-/* 
-.btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-} */
-
-.btn.submit {
-    width: unset;
-    border: 1px solid var(--button-hover-icon);
-}
-
-.btn.cancel {
-    width: unset;
-    border: 1px solid rgb(255, 61, 61);
-    color: rgb(255, 61, 61) !important;
-}
-
-
-.btn.cancel:hover {
-    background-color: rgb(255, 61, 61) !important;
-    color: #ffffff !important;
-}
-
-.text-area {
-    width: 100%;
 }

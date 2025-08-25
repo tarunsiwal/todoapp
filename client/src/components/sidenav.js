@@ -40,7 +40,7 @@ const Sidenav = (props) => {
     setIsPopupOpen(true);
   };
 
-  const addTask = async ({ title, description }) => {
+  const addTask = async ({ title, description, dueDate }) => {
     try {
       // We are using a POST request to create a new todo on the server
       const response = await fetch("http://localhost:5000/api/tasks", {
@@ -51,6 +51,7 @@ const Sidenav = (props) => {
         body: JSON.stringify({
           title: title, // Map the title from the form to the 'text' field on the backend
           description: description, // Also send the description
+          dueDate: dueDate,
         }),
       });
       console.log(response);
@@ -59,6 +60,9 @@ const Sidenav = (props) => {
         throw new Error("Failed to add todo");
       }
       setIsPopupOpen(false);
+      if (props.onTaskAdded) {
+        props.onTaskAdded();
+      }
     } catch (error) {
       console.error("Failed to add todo:", error);
     }
@@ -113,7 +117,7 @@ const Sidenav = (props) => {
               </button>
 
               <div className="user-sm-btn">
-                <button
+                {/* <button
                   className="btn btn-icon"
                   name="notification"
                   style={{ margin: "0" }}
@@ -122,7 +126,7 @@ const Sidenav = (props) => {
                   <StyledBadge badgeContent={0} color="secondary">
                     <NotificationsIcon />
                   </StyledBadge>
-                </button>
+                </button> */}
 
                 <button
                   className="btn btn-icon"
@@ -137,11 +141,6 @@ const Sidenav = (props) => {
             </div>
             <div className="add-task">
               <Sidenavbtn dothis={handleAddTaskClick} title={"Add a task"}>
-                {/* <PoupContainer
-                  trigger={isPopupOpen}
-                  onClose={() => setIsPopupOpen(false)}
-                  onAddTask={addTask}
-                /> */}
                 <AddCircleRoundedIcon />
               </Sidenavbtn>
             </div>

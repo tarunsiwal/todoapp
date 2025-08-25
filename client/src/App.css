@@ -12,7 +12,8 @@ a {
   --sidebar-width: 284px;
   --background-color: #fcfaf8;
   --button-hover: rgb(254, 238, 218);
-  --button-hover-icon: rgb(255, 193, 7);
+  --root-color: rgb(255, 193, 7);
+  --border: 1px solid #ccc;
 }
 
 .app-container {
@@ -62,7 +63,7 @@ a {
 }
 
 .btn:active .btnIcon {
-  color: var(--button-hover-icon);
+  color: var(--root-color);
 }
 
 .btn-icon {
@@ -86,23 +87,23 @@ a {
 
 .add-task .btn,
 .add-task .btn-icon {
-  color: var(--button-hover-icon);
+  color: var(--root-color);
 }
 
 .menu-container button:focus:active {
   .btn-icon {
-    color: var(--button-hover-icon);
+    color: var(--root-color);
   }
 
-  color: var(--button-hover-icon);
+  color: var(--root-color);
 }
 
 .user-sm-btn button:focus:active:nth-child(1) {
   .btn-icon {
-    color: var(--button-hover-icon);
+    color: var(--root-color);
   }
 
-  color: var(--button-hover-icon);
+  color: var(--root-color);
 }
 
 /*  */
@@ -222,9 +223,49 @@ a {
   z-index: 2 !important;
 }
 
-.task-card {
-  border: 1px solid #ccc;
+.tasks-card {
+  border: var(--border);
   border-radius: 5px;
   padding: 1em;
   margin-top: 1em;
+}
+
+.due-date {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.due-date .icon {
+  fill: var(--root-color);
+  font-size: 1em;
+}
+
+.btn.submit {
+  width: unset;
+  color: var(--root-color);
+  border: 1px solid var(--root-color);
+}
+
+.btn.submit:hover {
+  background-color: var(--root-color);
+  transition: background-color 0.3s ease-in-out;
+  color: #ffffff
+}
+
+.btn.cancel {
+  width: unset;
+  border: 1px solid rgb(255, 61, 61);
+  color: rgb(255, 61, 61) !important;
+}
+
+.btn.cancel:hover {
+  background-color: rgb(255, 61, 61) !important;
+  transition: background-color 0.3s ease-in-out;
+  color: #ffffff !important;
+}
+
+.task-tools {
+  display: flex;
+  gap: 0.5em;
 }
